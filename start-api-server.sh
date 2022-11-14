@@ -1,0 +1,1 @@
+source venv/bin/activate && uvicorn main:app --host 192.168.10.3 --port 3030 --workers 4
