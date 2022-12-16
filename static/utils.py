@@ -10,8 +10,10 @@ from PIL import Image
 import warnings
 warnings.filterwarnings("ignore")
 
+ort.set_default_logger_severity(3)
 
-class CFG(object):
+
+class Model(object):
     def __init__(self, lightweight: bool=False) -> None:
         self.ort_session = None
         self.size: int = 320
@@ -22,10 +24,7 @@ class CFG(object):
             self.path: str = "static/models/u2netp.onnx"
         else:
             self.path: str = "static/models/u2net.onnx"
-
-        ort.set_default_logger_severity(3)
     
-    def setup(self) -> None:
         model = onnx.load(self.path)
         onnx.checker.check_model(model)
         self.ort_session = ort.InferenceSession(self.path)
@@ -67,3 +66,9 @@ def encode_image_to_base64(header: str = "data:image/png;base64", image: np.ndar
 
 
 def preprocess_replace_bg_image(image: np.ndarray, w: int, h: int) -> np.ndarray: return cv2.resize(src=image, dsize=(w, h), interpolation=cv2.INTER_CUBIC)
+
+
+models: list = [
+    Model(),
+    Model(lightweight=True)
+]

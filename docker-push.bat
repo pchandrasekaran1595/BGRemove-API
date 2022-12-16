@@ -1,1 +1,0 @@
-start /MAX cmd /c "cls && title Push to Dockerhub && docker push %DOCKER_USERNAME%/bgremove-api:1.0 && timeout /t 5 /nobreak"

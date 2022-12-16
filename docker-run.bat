@@ -1,1 +1,0 @@
-start /MAX cmd /c "title API-SERVER && cls && docker run -d --name bgremove-container -p 3030:3030 %DOCKER_USERNAME%/bgremove-api:1.0 && timeout /t 10 /nobreak"

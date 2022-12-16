@@ -1,1 +1,0 @@
-start /MAX cmd /c "title BUILD-DOCKER-IMAGE && cls && docker build -t %DOCKER_USERNAME%/bgremove-api:1.0 . --no-cache"
